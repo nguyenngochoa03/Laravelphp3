@@ -17,9 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('address')->nullable();// có cũng đc k có cũng k sao 
-            $table->date('date_of_birth');
-            $table->integer('status')->default(1);// khởi tạo giá trị mặc định là 1 
+            $table->string('address')->nullable();// có cũng đc k có cũng k sao
+            $table->date('date_of_birth')->nullable();
+            $table->string('image')->nullable();
+            $table->integer('status')->default(1);// khởi tạo giá trị mặc định là 1
             $table->timestamps();
         });
     }

@@ -9,4 +9,5 @@ class Student extends Model
 {
     use HasFactory;
     protected $table = "students";// phải điền đúng tên bẳng mà mk cần trỏ
+    protected $fillable = ['id','name','email','image'];
 }

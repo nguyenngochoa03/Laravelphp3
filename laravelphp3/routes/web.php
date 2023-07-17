@@ -18,3 +18,8 @@ Route::get('/', function () {
 });
 Route::get('student', [App\Http\Controllers\StudentController::class ,'index']);
 Route::post('student', [App\Http\Controllers\StudentController::class ,'index']);
+// name là tên thay thế cho cả url
+Route::match(['GET','POST'],'/student/add', [App\Http\Controllers\AddController::class ,'addstudent'])
+    ->name('route_student_add');
+Route::match(['GET','POST'],'/student/edit/{id}', [App\Http\Controllers\AddController::class ,'editstudent'])
+    ->name('route_student_edit');
