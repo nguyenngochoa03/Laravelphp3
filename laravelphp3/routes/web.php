@@ -23,3 +23,5 @@ Route::match(['GET','POST'],'/student/add', [App\Http\Controllers\AddController:
     ->name('route_student_add');
 Route::match(['GET','POST'],'/student/edit/{id}', [App\Http\Controllers\AddController::class ,'editstudent'])
     ->name('route_student_edit');
+Route::get('student/delete/{id}', [App\Http\Controllers\StudentController::class ,'delete'])
+    ->name('route_student_delete');

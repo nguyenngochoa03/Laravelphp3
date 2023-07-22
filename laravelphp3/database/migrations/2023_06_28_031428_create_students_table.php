@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->integer('status')->default(1);// khởi tạo giá trị mặc định là 1
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Symfony\Component\HttpFoundation\Session\Session;
+
 class StudentController extends Controller
 {
     //
@@ -21,7 +24,8 @@ class StudentController extends Controller
 
         // lấy toàn bộ dữ liệu bảng student
         $student = DB::table('students')
-            ->select('id', 'name')    // lấy dữ liệu trường mong muốn
+            ->select('id', 'name','image')    // lấy dữ liệu trường mong muốn
+            ->whereNull('delete_at')
             ->get();
         $studentConditision = DB::table('students')
             ->where('id', '>=',1)
@@ -29,10 +33,16 @@ class StudentController extends Controller
 //            ->orWhere('email','=','gjhkjk')// orwwher là hoặc, where là và
         ->get();
         // trả về 1 dòng dữ liệu
-        $student = DB::table('students')->where('id','=',1)->get();
+        $student = DB::table('students')->get();
 //        dd($student);
 //        dd($studentConditision);
 
         return view('student.index', compact("title","name",'student'));
+    }
+
+    public function delete($id){
+        Student::where('id',$id)->delete();
+        Session::flash('suscess','Xoá thành công sinh viên có id là'.$id);
+        return redirect()->route('route_student_delete');
     }
 }
