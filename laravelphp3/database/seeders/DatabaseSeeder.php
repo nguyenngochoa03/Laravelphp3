@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call([StudentSeeder::class,ProductSeeder::class,CustomertSeeder::class]);
+        $this->call([StudentSeeder::class,ProductSeeder::class,UserSeeder::class]);
        // đây là nơi sử dụng tạo dữ liệu mẫu
 
 //       $student =[
